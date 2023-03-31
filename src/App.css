@@ -1,0 +1,49 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* NavBar */
+
+nav li {
+  list-style: none;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .title{
+  font-size: 2rem;
+}
+
+a[role="button"] {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+a[role="button"]:hover {
+  border-color: #646cff;
+}
+a[role="button"]:focus,
+a[role="button"]:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+canvas {
+  border: 1px solid black;
+  width: 380px;
+  height: 360px;
+  background-color: #fff;
+  clip-path: path("M 189 29.5312C137.128 29.5312 64.9688 127.752 64.9688 224.438C64.9688 257.333 78.0363 288.88 101.297 312.141C124.557 335.401 156.105 348.469 189 348.469C221.895 348.469 253.443 335.401 276.703 312.141C299.964 288.88 313.031 257.333 313.031 224.438C313.031 127.752 240.872 29.5312 189 29.5312Z");
+}
