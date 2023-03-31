@@ -8,6 +8,9 @@ function App() {
   const [y, setY] = useState(0)
 
   const [color, setColor] = useState('#902020')
+  const maxBrushWidth = 50
+  const minBrushWidth = 1
+  const [brushWidth, setBrushWidth] = useState(minBrushWidth)
 
   function handleMouseDown(e){
     console.log(e.currentTarget)
@@ -15,9 +18,9 @@ function App() {
     setX(e.clientX - rect.left);
     setY(e.clientY - rect.top);
     setIsDrawing(true)
-    console.log(x)
-    console.log(y)
-    console.log(isDrawing)
+    // console.log(x)
+    // console.log(y)
+    // console.log(isDrawing)
   }
 
   function handleMouseMove(e){
@@ -27,8 +30,8 @@ function App() {
       drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
       setX(e.clientX - rect.left);
       setY(e.clientY - rect.top);
-      console.log(rect.left);
-      console.log(rect.top);
+      // console.log(rect.left);
+      // console.log(rect.top);
     }
   }
 
@@ -43,15 +46,20 @@ function App() {
     }
   }
 
+  function degToRad(degrees) {
+    return degrees * Math.PI / 180;
+  };
+
   function drawLine(context, x1, y1, x2, y2){
-    console.log(x1, y1, x2, y2)
-    console.log(context);
+    // console.log(x1, y1, x2, y2)
+    // console.log(context);
+    context.fillStyle = color;
     context.beginPath();
-    context.strokeStyle = color;
-    context.lineWidth = 1;
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.stroke();
+    context.arc(x, y, brushWidth, degToRad(0), degToRad(360), false);
+    // context.lineWidth = 10;
+    // context.moveTo(x1, y1);
+    // context.lineTo(x2, y2);
+    context.fill();
     context.closePath();
   }
 
@@ -86,7 +94,8 @@ function App() {
           <input type="color" name="colorpicker" id="colorpicker" value={color} onChange={(e) => setColor(e.currentTarget.value)}/>
         </div>
         <div className="brushWidth">
-
+          <label>Range slider</label>
+          <input type="range" min={minBrushWidth} max={maxBrushWidth} value={brushWidth} id="range" name="range" onChange={(e) => setBrushWidth(e.currentTarget.value)}/>
         </div>
       </div>
     </>
